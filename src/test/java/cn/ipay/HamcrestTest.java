@@ -6,11 +6,16 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.anyOf;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.matchers.JUnitMatchers.hasItem;
 
 /**
  * Created by Rayest on 2016/8/12 0012.
  */
+
 public class HamcrestTest {
     private List<String> values;
 
@@ -25,5 +30,10 @@ public class HamcrestTest {
     @Test
     public void testWithoutHamcrest(){
         assertTrue(values.contains("1") || values.contains("2")|| values.contains("3"));
+    }
+
+    @Test
+    public void testWithHamcrest(){
+        assertThat(values, hasItem(anyOf(equalTo("1"), equalTo("2"), equalTo("3"))));
     }
 }
