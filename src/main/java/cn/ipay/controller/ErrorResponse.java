@@ -10,7 +10,6 @@ public class ErrorResponse implements Response {
     private Exception originException;
 
     public ErrorResponse(Request request, Exception exception) {
-
     }
 
     public Request getOriginRequest() {
