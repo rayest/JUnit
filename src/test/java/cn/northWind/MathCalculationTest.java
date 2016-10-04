@@ -13,13 +13,13 @@ public class MathCalculationTest {
 
     private MathCalculation calculation;
 
-    @Before
+    @Before  // 每个测试前都要进行该方法
     public void setUp() throws Exception {
         calculation = new MathCalculation();
         System.out.println("setUp...");
     }
 
-    @After
+    @After // 每个测试前都要进行该方法
     public void tearDown() throws Exception {
         calculation = null;
         System.out.println("Gone...");
