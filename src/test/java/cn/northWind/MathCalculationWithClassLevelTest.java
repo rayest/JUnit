@@ -10,13 +10,13 @@ import static org.junit.Assert.assertEquals;
  * Created by Rayest on 2016/10/4 0004.
  */
 public class MathCalculationWithClassLevelTest {
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
+
+    @BeforeClass // 在测试类测试之前进行运行该方法，仅一次
+     public static void setUpBeforeClass() throws Exception {
         System.out.println("setUp...");
     }
 
-
-    @AfterClass
+    @AfterClass // 在测试类测试结束后进行运行该方法，仅一次
     public static void tearDownAfterClass() throws Exception {
         System.out.println("tearDown...");
     }
