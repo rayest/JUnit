@@ -36,4 +36,10 @@ public class MathCalculationTest {
         int result = calculation.divide(10, 5);
         assertEquals(2, result);
     }
+
+    @Test(expected = ArithmeticException.class)
+    public void testDivideWithException(){
+        int result = calculation.divide(1, 0);
+        assertEquals(1, result);
+    }
 }
