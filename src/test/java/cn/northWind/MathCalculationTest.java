@@ -37,9 +37,15 @@ public class MathCalculationTest {
         assertEquals(2, result);
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test(expected = ArithmeticException.class) // 期望异常的处理注释
     public void testDivideWithException(){
         int result = calculation.divide(1, 0);
         assertEquals(1, result);
+    }
+
+    @Test(timeout = 100) // 测试所用时间的注释
+    public void testAddTimeout(){
+        int result = calculation.add(1, 8);
+        assertEquals(9, result);
     }
 }
