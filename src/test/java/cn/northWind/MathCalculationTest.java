@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Rayest on 2016/10/4 0004.
  */
+
 public class MathCalculationTest {
 
     private MathCalculation calculation;
