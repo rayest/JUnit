@@ -1,5 +1,6 @@
-package cn.northWind;
+package cn.northWind.math;
 
+import cn.northWind.math.MathCalculationWithClassLevel;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

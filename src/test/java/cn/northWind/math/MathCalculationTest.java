@@ -1,5 +1,6 @@
-package cn.northWind;
+package cn.northWind.math;
 
+import cn.northWind.math.MathCalculation;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,13 +39,13 @@ public class MathCalculationTest {
         assertEquals(2, result);
     }
 
-    @Test(expected = ArithmeticException.class) // 期望异常的处理注释
+    @Test(expected = ArithmeticException.class) // 期望异常的处理注解
     public void testDivideWithException(){
         int result = calculation.divide(1, 0);
         assertEquals(1, result);
     }
 
-    @Test(timeout = 100) // 测试所用时间的注释
+    @Test(timeout = 100) // 测试所用时间的注解
     public void testAddTimeout(){
         int result = calculation.add(1, 8);
         assertEquals(9, result);
