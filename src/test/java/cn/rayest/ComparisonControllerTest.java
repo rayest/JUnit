@@ -1,7 +1,5 @@
 package cn.rayest;
 
-import cn.rayest.controller.DemoController;
-import cn.rayest.service.TestProjectService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -18,20 +16,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by Rayest on 2016/10/6 0006.
  */
-public class DemoControllerTest {
+public class ComparisonControllerTest {
 
     @Mock
-    private TestProjectService testProjectService;
+    private ComparisonService comparisonService;
 
     @InjectMocks
-    private DemoController demoController;
+    private ComparisonController comparisonController;
 
     private MockMvc mockMvc;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        this.mockMvc = MockMvcBuilders.standaloneSetup(demoController).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(comparisonController).build();
     }
 
     @Test

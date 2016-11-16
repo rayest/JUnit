@@ -1,4 +1,4 @@
-package cn.northWind.mock.exception;
+package cn.rayeston.mock.exception;
 
 /**
  * Created by Rayest on 2016/10/5 0005.

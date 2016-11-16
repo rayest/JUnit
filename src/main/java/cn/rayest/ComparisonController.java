@@ -1,6 +1,5 @@
-package cn.rayest.controller;
+package cn.rayest;
 
-import cn.rayest.service.TestProjectServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,22 +10,21 @@ import javax.annotation.Resource;
  */
 
 
-
 @RestController
 @RequestMapping("/")
-public class DemoController {
+public class ComparisonController {
 
     @Resource
-    private TestProjectServiceImpl testProjectServiceImpl;
+    private ComparisonServiceImpl testProjectServiceImpl;
 
     @RequestMapping(value = "/number/minus", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public String NumberMinus (@RequestParam("longString") String longString, @RequestParam("shortString") String shortString){
+    public String NumberMinus(@RequestParam("longString") String longString, @RequestParam("shortString") String shortString) {
         int result = testProjectServiceImpl.compare(longString, shortString);
-        if (result >= 10 ){
+        if (result >= 10) {
             return "big difference";
-        }else {
+        } else {
             return "small difference";
         }
     }

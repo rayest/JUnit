@@ -16,7 +16,7 @@ public class WebClient {
         InputStream is = connection.getInputStream();
         byte[] buffer = new byte[2048];
         int count;
-        while (-1 != (count = is.read(buffer))){
+        while (-1 != (count = is.read(buffer))) {
             content.append(new String(buffer, 0, count));
         }
         return content.toString();

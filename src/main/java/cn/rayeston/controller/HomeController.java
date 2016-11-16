@@ -1,4 +1,4 @@
-package cn.northWind.controller;
+package cn.rayeston.controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,7 @@ import java.util.Locale;
 @RestController
 public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getHome(Locale locale, Model model){
+    public String getHome(Locale locale, Model model) {
         Date date = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
         String formattedDate = dateFormat.format(date);

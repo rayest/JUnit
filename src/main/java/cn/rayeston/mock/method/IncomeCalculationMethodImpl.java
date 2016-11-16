@@ -1,6 +1,6 @@
-package cn.northWind.mock.method;
+package cn.rayeston.mock.method;
 
-import cn.northWind.mock.Position;
+import cn.rayeston.mock.Position;
 
 /**
  * Created by Rayest on 2016/10/5 0005.

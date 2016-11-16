@@ -12,11 +12,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public void debit(long amount){
+    public void debit(long amount) {
         this.balance -= amount;
     }
 
-    public void credit(long amount){
+    public void credit(long amount) {
         this.balance += amount;
     }
 

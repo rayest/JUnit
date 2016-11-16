@@ -1,8 +1,8 @@
-package cn.northWind.mock;
+package cn.rayeston.mock;
 
-import cn.northWind.mock.exception.CalculationMethodException;
-import cn.northWind.mock.exception.PositionException;
-import cn.northWind.mock.method.IncomeCalculationMethod;
+import cn.rayeston.mock.exception.CalculationMethodException;
+import cn.rayeston.mock.exception.PositionException;
+import cn.rayeston.mock.method.IncomeCalculationMethod;
 
 /**
  * Created by Rayest on 2016/10/5 0005.
