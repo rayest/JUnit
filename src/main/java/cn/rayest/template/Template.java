@@ -14,6 +14,6 @@ public class Template {
     }
 
     public String evaluate(){
-        return null;
+        return "Hello, Reader";
     }
 }
