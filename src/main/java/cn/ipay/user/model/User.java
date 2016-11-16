@@ -4,6 +4,7 @@ package cn.ipay.user.model;
  * Created by Rayest on 2016/8/18 0018.
  */
 public class User {
+    private int id;
     private String username;
     private String password;
     private String nickname;
@@ -15,6 +16,14 @@ public class User {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {

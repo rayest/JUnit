@@ -1,4 +1,4 @@
-package cn.ipay.jetty;
+package cn.ipay.stub;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -24,7 +24,7 @@ import static org.junit.Assert.assertEquals;
 
 public class WebClientTest {
 
-    private class GetContentOkHandlerTest extends AbstractHandler{
+    private class GetContentOkHandlerTest extends AbstractHandler {
 
         public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch) throws IOException, ServletException {
             OutputStream out = response.getOutputStream();
@@ -40,7 +40,7 @@ public class WebClientTest {
     @BeforeClass
     public static void setUp() throws Exception {
         Server server = new Server(8080);
-        WebClientTest t  = new WebClientTest();
+        WebClientTest t = new WebClientTest();
         Context contentOkContext = new Context(server, "/testGetContentOk");
         contentOkContext.setHandler(t.new GetContentOkHandlerTest());
         server.setStopAtShutdown(true);
@@ -48,7 +48,7 @@ public class WebClientTest {
     }
 
     @AfterClass
-    public static void tearDown(){
+    public static void tearDown() {
     }
 
     @Test
@@ -57,4 +57,5 @@ public class WebClientTest {
         String result = client.getContent(new URL("http://localhost:8080/testGetContentOk"));
         assertEquals("It works", result);
     }
+
 }

@@ -22,7 +22,7 @@ public class UserServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        userService = new UserServiceImpl();
+        userService = new UserServiceInjectedDaoImpl();
         baseUser = new User("admin", "123", "π‹¿Ì‘±");
     }
 

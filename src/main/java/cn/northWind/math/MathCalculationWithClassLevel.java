@@ -1,4 +1,4 @@
-package cn.northWind;
+package cn.northWind.math;
 
 /**
  * Created by Rayest on 2016/10/4 0004.

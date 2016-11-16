@@ -3,9 +3,7 @@ package cn.ipay.controller;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 
 /**
  * Created by Rayest on 2016/8/12 0012.
@@ -16,7 +14,7 @@ public class DefaultControllerTest {
     private Request request;
     private RequestHandler handler;
 
-    private class SampleRequest implements Request{
+    private class SampleRequest implements Request {
         private static final String DEFAULT_NAME = "Test";
         private String name;
 
@@ -33,40 +31,40 @@ public class DefaultControllerTest {
         }
     }
 
-    private class SampleHandler implements RequestHandler{
+    private class SampleHandler implements RequestHandler {
         public Response process(Request request) {
             return new SampleResponse();
         }
     }
 
-    private class SampleResponse implements Response{
+    private class SampleResponse implements Response {
         private static final String NAME = "Test";
 
         public String getName() {
             return NAME;
         }
 
-        public boolean equals(Object object){
+        public boolean equals(Object object) {
             boolean result = false;
-            if (object instanceof SampleResponse){
+            if (object instanceof SampleResponse) {
                 result = ((SampleResponse) object).getName().equals(getName());
             }
             return result;
         }
 
-        public int hashCode(){
+        public int hashCode() {
             return NAME.hashCode();
         }
     }
 
-    private class SampleExceptionHandler implements RequestHandler{
+    private class SampleExceptionHandler implements RequestHandler {
         public Response process(Request request) throws Exception {
             throw new Exception("error processing request");
         }
     }
 
     @Before
-    public void initialize(){
+    public void initialize() {
         controller = new DefaultController();
         request = new SampleRequest();
         handler = new SampleHandler();
@@ -74,31 +72,56 @@ public class DefaultControllerTest {
     }
 
     @Test
-    public void testMethod(){
+    public void testMethod() {
         throw new RuntimeException("implement me");
     }
 
     @Test
-    public void testAddHandler(){
+    public void testAddHandler() {
         RequestHandler handler2 = controller.getHandler(request);
         assertSame("Handler we set in controller should be the controller we get", handler2, handler);
     }
 
     @Test
-    public void testProcessRequest(){
+    public void testProcessRequest() {
         Response response = controller.processRequest(request);
         assertNotNull("Must not return a null response" + response);
         assertEquals(new SampleResponse(), response);
     }
 
     @Test
-    public void testProcessRequestAnswersErrorResponse(){
+    public void testProcessRequestAnswersErrorResponse() {
         SampleRequest request = new SampleRequest("testError");
         SampleExceptionHandler handler = new SampleExceptionHandler();
         controller.addHandler(request, handler);
         Response response = controller.processRequest(request);
         assertNotNull("Must not return a null response", response);
         assertEquals(ErrorResponse.class, response.getClass());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testGetHandlerNotDefined() {
+        SampleRequest request = new SampleRequest("testNotDefined");
+        controller.getHandler(request);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testAddRequestDuplicationName() {
+        SampleRequest request = new SampleRequest();
+        SampleHandler handler = new SampleHandler();
+        controller.addHandler(request, handler);
+    }
+
+    @Test(timeout = 1300)
+    public void testProcessMultipleRequestTimeout() {
+        RequestHandler handler = new SampleHandler();
+        for (int i = 0; i < 99999; i++) {
+            Request request = new SampleRequest(String.valueOf(i));
+            controller.addHandler(request, handler);
+            Response response = controller.processRequest(request);
+            assertNotNull(response);
+            assertNotSame(ErrorResponse.class, response.getClass());
+        }
     }
 
 }

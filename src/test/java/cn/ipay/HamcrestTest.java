@@ -6,8 +6,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.matchers.JUnitMatchers.hasItem;
@@ -15,12 +18,11 @@ import static org.junit.matchers.JUnitMatchers.hasItem;
 /**
  * Created by Rayest on 2016/8/12 0012.
  */
-
 public class HamcrestTest {
     private List<String> values;
 
     @Before
-    public void setUpList(){
+    public void setUpList() {
         values = new ArrayList<String>();
         values.add("1");
         values.add("2");
@@ -28,12 +30,14 @@ public class HamcrestTest {
     }
 
     @Test
-    public void testWithoutHamcrest(){
-        assertTrue(values.contains("1") || values.contains("2")|| values.contains("3"));
+    public void testWithoutHamcrest() {
+        assertTrue(values.contains("1") || values.contains("2") || values.contains("3"));
     }
 
     @Test
-    public void testWithHamcrest(){
+    public void testWithHamcrest() {
         assertThat(values, hasItem(anyOf(equalTo("1"), equalTo("2"), equalTo("3"))));
+        assertThat(50, allOf(greaterThan(10), lessThan(60)));
     }
+
 }

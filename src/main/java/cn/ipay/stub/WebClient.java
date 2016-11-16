@@ -1,4 +1,4 @@
-package cn.ipay.jetty;
+package cn.ipay.stub;
 
 import java.io.IOException;
 import java.io.InputStream;
