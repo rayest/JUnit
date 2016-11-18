@@ -11,9 +11,16 @@ import static org.junit.Assert.assertEquals;
  */
 public class TemplateTest {
     @Test
-    public void testOneVariable() throws Exception {
+    public void testVariable() throws Exception {
         Template template = new Template("Hello, ${name}");
         template.set("name", "Reader");
         assertEquals("Hello, Reader", template.evaluate());
+    }
+
+    @Test
+    public void testVariableWithAnotherMethod() throws Exception {
+        Template template = new Template("Hello, ${name}");
+        template.set("name", "someone else");
+        assertEquals("Hello, someone else", template.evaluate());
     }
 }
