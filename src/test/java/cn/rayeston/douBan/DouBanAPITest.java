@@ -1,6 +1,8 @@
 package cn.rayeston.douBan;
 
 import cn.rayeston.foundation.annotation.Scenario;
+import com.jayway.restassured.RestAssured;
+import com.jayway.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +10,8 @@ import org.junit.Test;
 import static com.jayway.restassured.RestAssured.get;
 import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.hasItems;
 
 /**
  * Created by Rayest on 2016/11/23 0023.
@@ -15,7 +19,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 public class DouBanAPITest {
     @Before
     public void setUp() throws Exception {
-        // RestAssured.baseURI = "http://api.douban.com/v2/book";
+        RestAssured.baseURI = "http://api.douban.com/v2/book";
         // RestAssured.port = 80;
     }
 
@@ -28,8 +32,23 @@ public class DouBanAPITest {
 
     @Scenario("URL为 https://api.douban.com/v2/book/search?q=java8, 判断 Json 中的返回信息关键字为 “ java8 ” 的书本的数目")
     @Test
-    public void testGetJava8Books() throws Exception {
+    public void testCountJava8Books() throws Exception {
         given().param("q", "java8").when().get("https://api.douban.com/v2/book/search").then().body("count", equalTo(2));
+    }
+
+    @Scenario("解析 https://api.douban.com/v2/book/1220562 请求的 JSON 数据")
+    @Test
+    public void testParseJSON() throws Exception {
+        ValidatableResponse validatableResponse = get("https://api.douban.com/v2/book/1220562").then();
+        validatableResponse.body("title", equalTo("满月之夜白鲸现"));
+        //判断二级属性rating.max的值
+        validatableResponse.body("rating.max", equalTo(10));
+        //调用数组的方法判断数组的大小
+        validatableResponse.body("tags.size()", is(8));
+        //判断数组第一个对象的值
+        validatableResponse.body("tags[0].name", equalTo("片山恭一"));
+        //判断数组中是否有该元素
+        validatableResponse.body("author", hasItems("[日] 片山恭一"));
     }
 
 
