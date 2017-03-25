@@ -28,4 +28,5 @@ public class IncomeCalculator {
         }
         return incomeCalculationMethod.calc(position);
     }
+
 }

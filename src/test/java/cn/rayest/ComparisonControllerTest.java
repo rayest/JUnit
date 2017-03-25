@@ -1,5 +1,7 @@
 package cn.rayest;
 
+import cn.rayest.comparison.ComparisonController;
+import cn.rayest.comparison.ComparisonService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;

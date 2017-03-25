@@ -1,6 +1,5 @@
-package cn.rayest;
+package cn.rayest.comparison;
 
-import cn.rayest.ComparisonService;
 import org.springframework.stereotype.Service;
 
 /**

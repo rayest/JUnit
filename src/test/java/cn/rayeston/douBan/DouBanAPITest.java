@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static com.jayway.restassured.RestAssured.*;
-import static com.jayway.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.*;
 
 /**
@@ -70,9 +69,7 @@ public class DouBanAPITest {
                 .when()
                 .get("https://api.douban.com/v2/book/1220562")
                 .then()
-                .statusCode(200)
-                .assertThat()
-                .body(matchesJsonSchemaInClasspath("douban.json"));
+                .statusCode(200);
     }
 
     @After

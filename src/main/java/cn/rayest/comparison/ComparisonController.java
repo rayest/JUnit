@@ -1,4 +1,4 @@
-package cn.rayest;
+package cn.rayest.comparison;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
