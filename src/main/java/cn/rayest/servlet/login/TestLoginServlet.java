@@ -48,7 +48,6 @@ public class TestLoginServlet {
 
     @Test
     public void validLoginForwardsToFrontPageAndStoresUsername() throws Exception {
-
         request.addParameter("j_username", VALID_USERNAME);
         request.addParameter("j_password", CORRECT_PASSWORD);
         MockHttpServletResponse response = new MockHttpServletResponse();
