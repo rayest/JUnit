@@ -1,4 +1,4 @@
-package cn.rayest.persistence;
+package cn.rayest.persistence.jdbc;
 
 import com.mockobjects.sql.MockMultiRowResultSet;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package cn.rayest.persistence;
+package cn.rayest.persistence.jdbc;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

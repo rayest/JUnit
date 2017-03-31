@@ -1,4 +1,4 @@
-package cn.rayest.persistence;
+package cn.rayest.persistence.jdbc;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -18,5 +18,5 @@ public interface PersonDao {
 
     List<Person> findAll();
 
-    List<Person> findByLastName(String lastName) throws SQLException;
+    List findByLastName(String lastName) throws SQLException;
 }
